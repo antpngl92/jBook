@@ -5,24 +5,24 @@ import { ActionButton } from "components";
 import "./index.css";
 
 interface Props {
-  nextCellId: string | null;
+  previousCellId: string | null;
   forceVisible?: boolean;
 }
 
-const AddCell: FC<Props> = ({ nextCellId, forceVisible }) => {
-  const { insertCellBefore } = useActions();
+const AddCell: FC<Props> = ({ previousCellId, forceVisible }) => {
+  const { insertCellAfter } = useActions();
 
   return (
     <div className={`add-cell ${forceVisible && "force-visible"}`}>
       <div className="add-buttons">
         <ActionButton
-          action={() => insertCellBefore(nextCellId, "code")}
+          action={() => insertCellAfter(previousCellId, "code")}
           icon={"fa-plus"}
           buttonSize={"is-rounded is-small"}
           buttonText="Code"
         />
         <ActionButton
-          action={() => insertCellBefore(nextCellId, "text")}
+          action={() => insertCellAfter(previousCellId, "text")}
           icon={"fa-plus"}
           buttonSize={"is-rounded is-small"}
           buttonText="Text"
